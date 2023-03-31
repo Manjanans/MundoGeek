@@ -7,10 +7,27 @@
 }
 
 #navbar1{
-    font-size: 180%;
+    font-size: 150%;
 }
 
 #login{
     left: 0;
-    font-size: 180%;
+    font-size: 90%;
+}
+
+.geek-footer{
+    padding-top: 0.01%; 
+    margin-top: 5%;
+}
+
+.margen{
+    margin-left: 15%;
+}
+
+.mi-cuenta{
+    margin-right: 2%;
+}
+
+.buscador{
+    padding-top: 2%;
 }
