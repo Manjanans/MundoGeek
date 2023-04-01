@@ -31,3 +31,28 @@
 .buscador{
     padding-top: 2%;
 }
+
+.letras{
+    color:black;
+}
+
+.carrusel-img{ 
+    width: 100%;
+}
+
+.texto{
+    color: black;
+    background-color: white;
+    opacity: 80%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: black;
+}
