@@ -8,4 +8,3 @@ $(document).ready(function() {
     $('.cart-counter').text(carrito);
     });
   });
-
