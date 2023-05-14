@@ -6,6 +6,11 @@
     margin-right: 0;
 }
 
+#tarjetero{
+    padding-left: 15%; 
+    padding-top: 3%;
+}
+
 #navbar1{
     font-size: 150%;
 }
@@ -34,8 +39,9 @@
 }
 
 .card {
-    margin-right: 10%;
-    width: 18rem;
+    margin-right: 5%;
+    width: 75%;
+    height: 100%;
 }
 
 .card-body{
@@ -67,7 +73,7 @@
   background-color: black;
 }
 body {
-    background-image: url('juegitos4.jpg');
+    background-image: url('../IMAGES/juegitos4.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -78,4 +84,24 @@ body {
     margin-left: 15%;
     margin-right: 15%;
     padding-top: 3%;
+    color: white;
 }
+
+#comprar{
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+}
+
+#info{
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+}
+
+#botones{
+    margin-top: 10%;
+}
+
