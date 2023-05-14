@@ -74,17 +74,13 @@
 }
 body {
     background-image: url('../IMAGES/juegitos4.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-repeat: repeat;
     opacity: 1.0        ;
   }
 
 .formulario{
     margin-left: 15%;
-    margin-right: 15%;
-    padding-top: 3%;
-    color: white;
+    margin-right: 15%; 
 }
 
 #comprar{
@@ -104,4 +100,24 @@ body {
 #botones{
     margin-top: 10%;
 }
+
+.err{
+    font-size: 12px;
+    color:red;
+}
+
+#formato-form{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.border.border-4{
+    border: 5px solid #4811C8 !important;
+}
+
+.pass-err{
+    text-align: center;
+    justify-content: center;
+}
+
 
