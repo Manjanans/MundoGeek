@@ -74,9 +74,7 @@
 }
 body {
     background-image: url('../IMAGES/juegitos4.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-repeat: repeat;
     opacity: 1.0        ;
   }
 
