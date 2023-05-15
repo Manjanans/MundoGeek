@@ -1,3 +1,5 @@
+const region = ["Región de Arica y Parinacota",];
+
 $(document).ready(function () {
   $.get("../javascript/comunas.json",
     function (data) {
