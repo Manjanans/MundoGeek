@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
-    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
     <link rel="stylesheet" href="{% static 'style/style.css' %}">
     <script src="https://kit.fontawesome.com/57fef64641.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a href="../index.html"><img src="{% static 'img/logo.jpg' %}" alt="logo" width="80" height="60"></a>
+            <a href="{% url 'index' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo" width="80" height="60"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar1">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="manga.html">Manga</a>
@@ -315,7 +315,7 @@
                 <div class="row mt-3">
                     <div class="col-4" style="margin-right: 10%;">
                         <h6 class="text-uppercase fw-bold mb-4">
-                            <img src="../images/logo.jpg" alt="logo" width="40" height="30" style="margin-right: 5%;">
+                            <img src="{% static 'img/logo.jpg' %}" alt="logo" width="40" height="30" style="margin-right: 5%;">
                             Mundo Geek
                         </h6>
                         <p style="text-align: justify;">
@@ -379,7 +379,7 @@
         <div class="container text-center text-md-start mt-5">
                 <div class="rounded my-3" style="background-color: white">
                     <center>
-                        <img src="../images/inst.png" alt="banner-insta" class="img-fluid" style="padding-bottom: 1%;" id="instagram">
+                        <img src="{% static 'img/inst.png' %}" alt="banner-insta" class="img-fluid" style="padding-bottom: 1%;" id="instagram">
                     </center>
                     <div class="card-group" style="height: 20%; padding-bottom: 2%; padding-left: 3%;">
                     </div>
@@ -397,8 +397,8 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../javascript/carrito.js"></script>
-    <script src="../javascript/api_instagram.js"></script>
+    <script src="{% static 'javascript/carrito.js' %}"></script>
+    <script src="{% static 'javascript/api_instagram.js' %}"></script>
 </body>
 
 </html>
