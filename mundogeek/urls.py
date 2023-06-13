@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from juegos.views import *
+from mangas.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',videojuegosPC,name="indexPC")
 ]
