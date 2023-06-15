@@ -1,30 +1,13 @@
-const region = ["Región de Arica y Parinacota",];
-
-$(document).ready(function () {
-  $.get("../javascript/comunas.json",
-    function (data) {
-      $.each(data.regiones, function (i, item) {
-        $("#regiones").append("<option value='" + item.region + "'>" + item.region + "</option>");
-      });
-    });
-});
-
-function cambioDeComunaXRegion() {
-  var comuna;
-  document.getElementById("comuna").innerHTML = "<option value='selec'>Seleccione la comuna</option>";
-  $(document).ready(function () {
-    $.get("../javascript/comunas.json",
-      function (data) {
-        $.each(data.regiones, function (i, item) {
-          if (document.getElementById('regiones').value == item.region) {
-            comuna = item.comunas;
-            for (var i = 0; i < comuna.length; i++) {
-              $("#comuna").append("<option value='" + comuna[i] + "'>" + comuna[i] + "</option>");
-            }
-          }
-        });
-      });
-  });
+function agregarRegionesAElElemento(){
+  console.log("hola")
+  /*let jeje = document.getElementById("regiones");
+  for (let reg of regiones){
+    console.log(reg)
+    var opt = document.createElement('option');
+    opt.value = reg;
+    opt.innerHTML = reg;
+    jeje.appendChild(opt);
+  }*/
 }
 
 function verificarEmailUser() {
@@ -35,6 +18,17 @@ function verificarEmailUser() {
   }
   else {
     document.getElementById('invalid-email').textContent = "";
+    return true;
+  }
+}
+
+function verificarRegionyComuna() {
+  const reggion = document.getElementById('regiones').value;
+  const communa = document.getElementById('comuna').value;
+  if (reggion == "seleccion" || communa == "comuna") {
+    return false;
+  }
+  else {
     return true;
   }
 }
@@ -151,7 +145,6 @@ let formulario = document.getElementById('crearUsuario');
 
 formulario.addEventListener("submit", (e) => {
   if (!verificarEmailUser() || !verificarLargoNombre() || !verificarApellidoCliente() || !verificarLargoUsuario() || !verificarContraseniaUsuario()) {
-    alert("Le faltan ingresar datos.\nRellene el formulario correctamente.");
     verificarApellidoCliente();
     verificarContraseniaUsuario();
     verificarEmailUser();
@@ -171,4 +164,6 @@ formulario.addEventListener("submit", (e) => {
     localStorage.setItem("cliente", JSON.stringify(nuevo));
   }
 }
-);      
+);
+
+
