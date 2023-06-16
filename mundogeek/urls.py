@@ -23,4 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name="index"),
     path('videojuegos/pc', videojuegosPC, name="indexPC"),
+    path('usuario/crearusuario',createUser, name="crearUsuario"),
+    path('usuario/creacionexitosa',creacionexitosa, name="usuarioExitoso"),
+    path('mangas/listado',indexMangas,name="indexMangas"),
+    path('videojuegos/PS4',videojuegosPS4,name="indexPS4"),
+    path('videojuegos/Switch',videojuegosSwitch,name="indexSwitch"),
+    path('usuario/iniciasesion',iniciaSesion, name="iniciaSesion"),
 ]
