@@ -23,6 +23,7 @@
     </header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
         <div class="container-fluid">
             <a href="{% url 'index' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo" width="80" height="60"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -33,10 +34,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar1">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'indexMangas' %}">Manga</a>
+                        <a class="nav-link active" href="{% url 'indexMangas' %}">Manga</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -55,100 +56,29 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="btn-group mi-cuenta">
-                    <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Mi Cuenta
-                    </button>
-                    <ul class="dropdown-menu" id="login">
-                        <li class="dropdown-item">
-                            <a class="text-reset" href="{% url 'iniciaSesion' %}">Iniciar Sesión</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="{% url 'crearUsuario' %}" class="text-reset">Crear Usuario</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <form class="d-flex my-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav margen-carro">
-                    <li class="nav-item">
-                    <li><a href="#" class="text-reset"><span class="cart-counter">0</span> Productos <i
-                                class="fa-solid fa-cart-shopping"></i></a></li>
-                    </li>
-                </ul>
             </div>
         </div>
+        
     </nav>
 
     <section>
         <div class="d-flex flex-wrap" id="tarjetero">
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/manga-Shoujo-Shuumatsu.jpg" class="card-img-top" alt="Portada Shoujo Shuumatsu">
-                    <div class="card-body">
-                      <h5 class="card-title">Shoujo Shuumatsu Ryokou</h5>
-                      <p class="card-text"> Yuuri y Chito son 2 chicas que navegan por las ruinas de una civilización después de un apocalipsis desconocido, y mientras viajan en su modificado Kettenkrad, buscan comida y provisiones mientras sobreviven el día a día.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/Azumangadaioh.png" class="card-img-top" alt="Portada Azumanga Daioh">
-                    <div class="card-body">
-                      <h5 class="card-title">Azumanga Daioh</h5>
-                      <p class="card-text">Narra la vida diaria de un grupo de estudiantes de una escuela en Japón. Se centra en temas comunes como la búsqueda de aceptación, la amistad y la competencia académica, pero también incluye elementos surrealistas.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/one-punch.png" class="card-img-top" alt="Portada One Punch Man">
-                    <div class="card-body">
-                      <h5 class="card-title">One Punch Man</h5>
-                      <p class="card-text"> El mundo es invadido por extraños monstruos que causan numerosos desastres a la población. Saitama es un poderoso superhéroe calvo que derrota fácilmente a los monstruos u otros villanos con un único golpe de su puño.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                </div>
-            </div>  
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/drstone.jpg" class="card-img-top" alt="Portada Shoujo Shuumatsu">
-                    <div class="card-body">
-                      <h5 class="card-title">Dr. Stone</h5>
-                      <p class="card-text"> La historia cuenta las aventuras de Senku y Taiju, dos adolescentes que se ven atrapados en un mundo post-apocalíptico en el que la raza humana se ha convertido en piedra y ellos buscan la manera de revertir la petrificación en la mayor cantidad de personas posibles.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                  </div>
-            </div> 
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/hajimeippo.jpg" class="card-img-top" alt="Portada Shoujo Shuumatsu">
-                    <div class="card-body">
-                      <h5 class="card-title">Hajime Ippo</h5>
-                      <p class="card-text"> La serie cuenta la historia de Makunouchi Ippo, un joven estudiante de preparatoria bastante introvertido que sufre el acoso de un grupo de matones en su colegio. Después de ser salvado de una paliza por un boxeador llamado Takamura Mamoru, Ippo comienza a sentir fascinación por el mundo del boxeo.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                  </div>
-            </div> 
-            <div class="col-md-4" style="padding-top: 2%;">
-                <div class="card">
-                    <img src="../images/chinchan.jpg" class="card-img-top" alt="Portada Shoujo Shuumatsu">
-                    <div class="card-body">
-                      <h5 class="card-title">Shin Chan</h5>
-                      <p class="card-text"> Shinnosuke Nohara es un crío de solo cinco años que trae de cabeza a su familia y a sus amigos. Curioso, desvergonzado, travieso y con una obsesión por el sexo desmedida para su edad, Shin-Chan tiene una facilidad sorprendente para dejar en ridículo a sus padres en cualquier situación.</p>
-                      <a href="#" class="btn btn-primary anadir" id="anadir">Comprar</a>
-                    </div>
-                  </div>
-            </div> 
-            
-            
-
+            {% if mangas %}
+                {% for manga in mangas %}
+                    {% block manguitas %}
+                        <div class="col-md-4" style="padding-top: 2%;">
+                            <div class="card">
+                                <img src="{{manga.imagen.url}}" class="card-img-top" alt="Portada {{manga.titulo}}">
+                                <div class="card-body">
+                                <h5 class="card-title">{{manga.titulo}}</h5>
+                                <p class="card-text">{{manga.descripcion}}</p>
+                                <a href="{% url 'pedidoManga' ident=manga.idmanga %}" class="btn btn-primary anadir" id="anadir" name="{{manga.idmanga}}">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endif %}
         </div>
     </section>
     
@@ -192,12 +122,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <p style="padding-top: 4%;">
-                            <a class="text-reset" href="{% url 'iniciaSesion' %}"> Inicia Sesión</a>
-                        </p>
-                        <p style="padding-top: 0.0000001%;">
-                            <a class="text-reset" href="{% url 'crearUsuario' %}">Crea tu usuario</a>
-                        </p>
                     </div>
                     <div class="col-4 g-0">
                         <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>

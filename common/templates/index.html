@@ -26,6 +26,7 @@
     </header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
         <div class="container-fluid">
             <a href="{% url 'index' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo" width="80" height="60"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -58,33 +59,9 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="btn-group mi-cuenta">
-                    <button class="btn btn-secondary btn-md dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Mi Cuenta
-                    </button>
-                    <ul class="dropdown-menu" id="login">
-                        <li class="dropdown-item">
-                            <a class="text-reset" href="{% url 'iniciaSesion' %}">Iniciar Sesión</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="{% url 'crearUsuario' %}" class="text-reset">Crear Usuario</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <form class="d-flex my-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-                <ul class="navbar-nav margen-carro">
-                    <li class="nav-item">
-                    <li><a href="#" class="text-reset"><span class="cart-counter">0</span> Productos <i
-                                class="fa-solid fa-cart-shopping"></i></a></li>
-                    </li>
-                </ul>
             </div>
         </div>
+        
     </nav>
 
     <section>
@@ -172,12 +149,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <p style="padding-top: 4%;">
-                            <a class="text-reset" href="{% url 'iniciaSesion' %}"> Inicia Sesión</a>
-                        </p>
-                        <p style="padding-top: 0.0000001%;">
-                            <a class="text-reset" href="{% url 'crearUsuario' %}">Crea tu usuario</a>
-                        </p>
                     </div>
                     <div class="col-4 g-0">
                         <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
