@@ -7,5 +7,6 @@ class Manga(models.Model):
     imagen = models.ImageField(upload_to='static/manga')
     precio = models.IntegerField()
     inventario = models.IntegerField()
+    tipo = models.CharField(max_length=100)
 
 # Create your models here.

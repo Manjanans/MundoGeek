@@ -57,86 +57,36 @@ function verificarApellidoCliente() {
   }
 }
 
-function verificarLargoUsuario() {
-  const user = document.getElementById('usuario').value;
-  if (user.length < 6) {
-    document.getElementById('invalid-user').textContent = "Usuario ingresado es muy corto. Debe ser de al menos 6 caracteres de largo.";
+function verificarRutdelCliente(){
+  var run=document.getElementById('rut').value;
+  if (parseInt(run)<2000000 || parseInt(run)>40000000){
+    document.getElementById('invalid-run').textContent = "El rut ingresado no corresponde.";
     return false;
-  }
-  else {
-    document.getElementById('invalid-user').textContent = "";
+  }else {
+    document.getElementById('invalid-run').textContent = "";
     return true;
   }
 }
 
-function largoContrasenia(largo) {
-  if (largo < 8) {
-    document.getElementById('pass-largo').textContent = "La contraseña debe tener al menos 8 caracteres."
-    document.getElementById('pass-largo').style.color = "red";
+function verificarTelefonodelCliente(){
+  var numero=document.getElementById('telefono').value;
+    
+  if (parseInt(numero)<11111111 || parseInt(numero)>99999999){
+    document.getElementById('invalid-fono').textContent = "El número de teléfono ingresado no corresponde.";
     return false;
-  } else {
-    document.getElementById('pass-largo').style.color = "green";
+  }else {
+    document.getElementById('invalid-fono').textContent = "";
     return true;
   }
 }
 
-function contieneMayuscula(pass) {
-  return /[A-Z]/.test(pass);
-}
-
-function contieneCaracterEspecial(pass) {
-  return /[@_*(),%]/.test(pass);
-}
-
-function contieneNumeroStr(pass) {
-  return /[0-9]/.test(pass);
-}
-
-function mayusEnContrasenia(pass) {
-  if (!contieneMayuscula(pass)) {
-    document.getElementById('pass-mayus').textContent = "La contraseña debe tener al menos 1 caracter en mayúsculas."
-    document.getElementById('pass-mayus').style.color = "red";
+function verificarDirecciondelCliente(){
+  var direccion=document.getElementById('direccion').value; 
+  if (direccion.length<10){
+    document.getElementById('invalid-direccion').textContent = "La dirección ingresada es muy corta. Intenta nuevamente.";
     return false;
-  }
-  else {
-    document.getElementById('pass-mayus').style.color = "green";
-    return true;
-  }
-}
-
-function especialEnContrasenia(pass) {
-  if (!contieneCaracterEspecial(pass)) {
-    document.getElementById('pass-especial').textContent = "La contraseña debe tener al menos un caracter especial ej: (@,_,*,(,),%)."
-    document.getElementById('pass-especial').style.color = "red";
-    return false;
-  }
-  else {
-    document.getElementById('pass-especial').style.color = "green";
-    return true;
-  }
-}
-
-function contraseniaTieneNum(pass) {
-  if (!contieneNumeroStr(pass)) {
-    document.getElementById('pass-num').textContent = "La contraseña debe contener al menos un número."
-    document.getElementById('pass-num').style.color = "red";
-    return false;
-  } else {
-    document.getElementById('pass-num').style.color = 'green';
-    return true;
-  }
-}
-
-function verificarContraseniaUsuario() {
-  var pass = document.getElementById('contrasenia').value;
-  var largo = pass.length;
-  if (!largoContrasenia(largo) || !mayusEnContrasenia(pass) || !especialEnContrasenia(pass) || !contraseniaTieneNum(pass)) {
-    largoContrasenia(largo);
-    mayusEnContrasenia(pass);
-    especialEnContrasenia(pass);
-    contraseniaTieneNum(pass);
-    return false;
-  } else {
+  }else {
+    document.getElementById('invalid-direccion').textContent = "";
     return true;
   }
 }
@@ -144,24 +94,14 @@ function verificarContraseniaUsuario() {
 let formulario = document.getElementById('crearUsuario');
 
 formulario.addEventListener("submit", (e) => {
-  if (!verificarEmailUser() || !verificarLargoNombre() || !verificarApellidoCliente() || !verificarLargoUsuario() || !verificarContraseniaUsuario()) {
+  if (!verificarEmailUser() || !verificarLargoNombre() || !verificarApellidoCliente() || !verificarRegionyComuna() || !verificarRutdelCliente() ||!verificarTelefonodelCliente()) {
     verificarApellidoCliente();
-    verificarContraseniaUsuario();
+    verificarRegionyComuna();
     verificarEmailUser();
     verificarLargoNombre();
-    verificarLargoUsuario();
+    verificarRutdelCliente();
+    verificarTelefonodelCliente()
     e.preventDefault();
-  } else {
-    const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value;
-    const mail = document.getElementById('email').value + '@' + document.getElementById('server').value;
-    const user = document.getElementById('usuario').value;
-    const pass = document.getElementById('contrasenia').value;
-    const region = document.getElementById('regiones').value;
-    const comuna = document.getElementById('comuna').value;
-    const nuevo = new cliente(nombre, apellido, mail, user, pass, region, comuna);
-    alert("Usuario creado exitosamente.\nUsuario: " + nuevo.user + "\nContraseña: " + nuevo.pass);
-    localStorage.setItem("cliente", JSON.stringify(nuevo));
   }
 }
 );

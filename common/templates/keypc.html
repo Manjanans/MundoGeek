@@ -83,19 +83,12 @@
                     </div>
                     <div class="col-md-4">
                         <label for="" class="form-label">Precio:</label>
-                        <input type="text" class="form-control"  name = "price" value="${{item.precio}}" readonly>
+                        <input type="text" class="form-control" name = "price" value="${{item.precio}}" readonly>
                         
                     </div>
                 </div>
+                <input type="hidden" value="{{item.idcomputador}}" name = "identif">
                 {% endif %}
-                {% if item.tipo == 'JuegoPlay' %}
-                        <input type="hidden" value="{{item.idplay}}" name = "ident">
-                    {% elif item.tipo == 'Manga' %}
-                        <input type="hidden" value="{{item.idmanga}}" name = "ident">
-                    {% elif item.tipo == 'JuegoSwitch' %}
-                        <input type="hidden" value="{{item.idswitch}}" name = "ident">
-                {% endif %}
-
                 <div class="row g-2 my-1" id="formato-form">
                     <div class="col-md-6">
                         <label for="nombre" class="form-label">Nombres</label>
@@ -143,34 +136,6 @@
                         <span id="invalid-email" class="err"></span>
                     </div>
                 </div>
-                <div class="row my-1" id="formato-form">
-                    <div class="col-md-6">
-                        <label for="regiones">Region:</label>
-                        <select name="regiones" class="form-select" id="regiones" name = "regiones" onchange="cambioDeComunaXRegion()">
-                            <option value="seleccion">Seleccione la región</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="comuna">Comuna:</label>
-                        <select name="comuna" class="form-select" id="comuna" name = "comuna">
-                            <option value="comuna">Seleccione la comuna</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="d-flex flex-row justify-content-center my-1">
-                    <div class="col-10">
-                        <label for="direccion" class="form-label">Ingresa tu dirección</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="Ingresa tu dirección exacta" name = "direccion"
-                            aria-describedby="inputGroupPrepend" onkeyup="verificarDirecciondelCliente()">
-                        <span id="invalid-direccion" class="err">
-                            {% if mensaje %}
-                                {{mensaje}}
-                            {% endif %}
-                        </span>
-                    </div>
-                </div>
-                
                 <div class="d-flex justify-content-center my-3">
                     <button class="btn btn-primary" type="submit">Comprar</button>
                 </div>

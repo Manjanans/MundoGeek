@@ -74,7 +74,7 @@
                                     <div class="card-body">
                                     <h5 class="card-title">{{juego.titulo}}</h5>
                                     <p class="card-text">{{juego.descripcion}}</p>
-                                    <a href="{% url 'pedido' ident=juego.idpc, tipo=pc %}" class="btn btn-primary anadir" id="anadir" name="{{id=juego.idpc}}">Comprar</a>
+                                    <a href="{% url 'pedidoPc' ident=juego.idcomputador %}" class="btn btn-primary anadir" id="anadir" name="{{juego.idcomputador}}">Comprar</a>
                                     </div>
                                 </div>
                             </div>
