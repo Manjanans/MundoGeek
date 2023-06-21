@@ -76,11 +76,11 @@
                     <img src="{% static 'img/carrusel/carrusel1.jpg' %}" alt="Mundo Geek" class="d-block carrusel-img">
                 </div>
                 <div class="carousel-item">
-                    <a href="html/manga.html"><img src="{% static 'img/carrusel/carrusel2.png' %}" alt="Manga"
+                    <a href="{% url 'indexMangas' %}"><img src="{% static 'img/carrusel/carrusel2.png' %}" alt="Manga"
                             class="d-block carrusel-img"></a>
                 </div>
                 <div class="carousel-item">
-                    <a href="html/pc.html"><img src="{% static 'img/carrusel/carrusel3.png' %}" alt="Videojuegos"
+                    <a href="{% url 'indexPC' %}"><img src="{% static 'img/carrusel/carrusel3.png' %}" alt="Videojuegos"
                             class="d-block carrusel-img"></a>
                 </div>
             </div>
