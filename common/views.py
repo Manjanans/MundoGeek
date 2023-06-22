@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from juegos.models import *
 from mangas.models import *
@@ -134,4 +134,35 @@ def confirmacionKeyPc(request):
     context={'mensaje':'OK, datos guardados con éxito'}
     return render(request,'confirmado.html',context)
 
+def listar_pedidos(request):
+    pedidos = Pedido.objects.all()
+    return render(request, 'listar_pedidos.html', {'pedidos': pedidos})
+
+def editar_pedido(request, idPedido):
+    pedido = get_object_or_404(Pedido, idPedido=idPedido)
+
+    if request.method == 'POST':
+        # Obtener los nuevos datos del formulario
+        nuevo_nombre = request.POST.get('nombre')
+        nuevo_email = request.POST.get('email')
+
+        # Actualizar los campos del pedido
+        pedido.nombres = nuevo_nombre
+        pedido.email = nuevo_email
+        pedido.save()
+
+        return redirect('listar_pedidos')
+
+    return render(request, 'editar_pedido.html', {'pedido': pedido})
+
+def eliminar_pedido(request, idPedido):
+    pedido = get_object_or_404(Pedido, idPedido=idPedido)
+
+    if request.method == 'POST':
+        # Eliminar el pedido
+        pedido.delete()
+
+        return redirect('listar_pedidos')
+
+    return render(request, 'eliminar_pedido.html', {'pedido': pedido})
 # Create your views here.
