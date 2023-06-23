@@ -142,13 +142,23 @@ def editar_pedido(request, idPedido):
     pedido = get_object_or_404(Pedido, idPedido=idPedido)
 
     if request.method == 'POST':
-        # Obtener los nuevos datos del formulario
-        nuevo_nombre = request.POST.get('nombre')
-        nuevo_email = request.POST.get('email')
+        
+        nombres = request.POST["name"]
+        apellidos = request.POST["surname"]
+        rut = request.POST["rut"]
+        telefono = request.POST["telefono"]
+        regg = request.POST["regiones"]
+        comuna = request.POST["comuna"]
+        direccion = request.POST["direccion"]
 
-        # Actualizar los campos del pedido
-        pedido.nombres = nuevo_nombre
-        pedido.email = nuevo_email
+        
+        pedido.nombres = nombres
+        pedido.apellidos = apellidos
+        pedido.rut = rut
+        pedido.telefono = telefono
+        pedido.region = regg
+        pedido.comuna = comuna
+        pedido.direccion = direccion
         pedido.save()
 
         return redirect('listar_pedidos')

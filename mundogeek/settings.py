@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mangas',
     'mundogeek',
     'common',
+    'administracion',
 ]
 
 MIDDLEWARE = [
