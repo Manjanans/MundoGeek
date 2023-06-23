@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import render
 from .models import *
 from juegos.models import *
 from mangas.models import *
@@ -134,45 +134,4 @@ def confirmacionKeyPc(request):
     context={'mensaje':'OK, datos guardados con éxito'}
     return render(request,'confirmado.html',context)
 
-def listar_pedidos(request):
-    pedidos = Pedido.objects.all()
-    return render(request, 'listar_pedidos.html', {'pedidos': pedidos})
-
-def editar_pedido(request, idPedido):
-    pedido = get_object_or_404(Pedido, idPedido=idPedido)
-
-    if request.method == 'POST':
-        
-        nombres = request.POST["name"]
-        apellidos = request.POST["surname"]
-        rut = request.POST["rut"]
-        telefono = request.POST["telefono"]
-        regg = request.POST["regiones"]
-        comuna = request.POST["comuna"]
-        direccion = request.POST["direccion"]
-
-        
-        pedido.nombres = nombres
-        pedido.apellidos = apellidos
-        pedido.rut = rut
-        pedido.telefono = telefono
-        pedido.region = regg
-        pedido.comuna = comuna
-        pedido.direccion = direccion
-        pedido.save()
-
-        return redirect('listar_pedidos')
-
-    return render(request, 'editar_pedido.html', {'pedido': pedido})
-
-def eliminar_pedido(request, idPedido):
-    pedido = get_object_or_404(Pedido, idPedido=idPedido)
-
-    if request.method == 'POST':
-        # Eliminar el pedido
-        pedido.delete()
-
-        return redirect('listar_pedidos')
-
-    return render(request, 'eliminar_pedido.html', {'pedido': pedido})
 # Create your views here.

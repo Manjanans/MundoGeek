@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualiza los VideoJuegos de Computador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pedido {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pedido p {
+            margin: 1;
+        }
+
+        .pedido a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pedido a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'adminIndex' %}">Volver</a>
+    <div class="container">
+        <h1>Administracion</h1>
+        <h2>Lista de Juegos de PC</h2>
+        {% for juego in juegos %}
+        <div class="pedido">
+            <p>Título del Juego: {{ juego.titulo }}</p>
+            <p>Stock: {{ juego.inventario }}</p>
+            <p>Descripcion: {{ juego.descripcion }}</p>
+            <a href="{% url 'editar_pc' juego.idcomputador %}" class="btn">Editar</a>
+            <a href="{% url 'eliminar_pc' juego.idcomputador %}" class="btn btn-danger">Eliminar</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
