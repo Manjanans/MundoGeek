@@ -20,7 +20,7 @@ def agregar_manga(request):
                 contador+=3
             except:
                 contador = 1
-            titulo = formulario.cleaned_data.get("titulo_Manga")
+            titulo = formulario.cleaned_data.get("titulo")
             descripcion = request.POST["descripcion"]
             precio = request.POST["precio"]
             inventario = request.POST["inventario"]
@@ -28,22 +28,88 @@ def agregar_manga(request):
             obj.save()
             return redirect('adminIndex')
         else:
-            return redirect('index')
-        
-        
-        
+            return redirect('index')  
     context = {}
     context['form'] = subirImagen()
     return render(request,'agregar_manga.html',context)
 
 def agregar_switch(request):
-    return render(request,'agregar_switch.html')
+    if request.method == "POST":
+        formulario = subirImagen(request.POST,request.FILES)
+        if formulario.is_valid():
+            img = formulario.cleaned_data.get("imagen")
+            contador = 0
+            mangas = Manga.objects.all()
+            try:
+                for m in mangas:
+                    contador = m.idmanga
+                contador+=4
+            except:
+                contador = 1
+            titulo = formulario.cleaned_data.get("titulo")
+            descripcion = request.POST["descripcion"]
+            precio = request.POST["precio"]
+            inventario = request.POST["inventario"]
+            obj = JuegoSwitch(contador, titulo,descripcion,img,precio,inventario,"JuegoSwitch")
+            obj.save()
+            return redirect('adminIndex')
+        else:
+            return redirect('index')  
+    context = {}
+    context['form'] = subirImagen()
+    return render(request,'agregar_switch.html',context)
 
 def agregar_play(request):
-    return render(request,'agregar_play.html')
+    if request.method == "POST":
+        formulario = subirImagen(request.POST,request.FILES)
+        if formulario.is_valid():
+            img = formulario.cleaned_data.get("imagen")
+            contador = 0
+            mangas = Manga.objects.all()
+            try:
+                for m in mangas:
+                    contador = m.idmanga
+                contador+=5
+            except:
+                contador = 1
+            titulo = formulario.cleaned_data.get("titulo")
+            descripcion = request.POST["descripcion"]
+            precio = request.POST["precio"]
+            inventario = request.POST["inventario"]
+            obj = JuegoSwitch(contador, titulo,descripcion,img,precio,inventario,"JuegoPlay")
+            obj.save()
+            return redirect('adminIndex')
+        else:
+            return redirect('index')  
+    context = {}
+    context['form'] = subirImagen()
+    return render(request,'agregar_play.html',context)
 
 def agregar_pc(request):
-    return render(request,'agregar_pc.html')
+    if request.method == "POST":
+        formulario = subirImagen(request.POST,request.FILES)
+        if formulario.is_valid():
+            img = formulario.cleaned_data.get("imagen")
+            contador = 0
+            mangas = Manga.objects.all()
+            try:
+                for m in mangas:
+                    contador = m.idmanga
+                contador+=6
+            except:
+                contador = 1
+            titulo = formulario.cleaned_data.get("titulo")
+            descripcion = request.POST["descripcion"]
+            precio = request.POST["precio"]
+            inventario = request.POST["inventario"]
+            obj = JuegoSwitch(contador, titulo,descripcion,img,precio,inventario,"JuegoPC")
+            obj.save()
+            return redirect('adminIndex')
+        else:
+            return redirect('index')  
+    context = {}
+    context['form'] = subirImagen()
+    return render(request,'agregar_pc.html',context)
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all()
