@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de administración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .elementos {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pedido p {
+            margin: 1;
+        }
+
+        .pedido a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pedido a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Administracion</h1>
+        <h2>Secciones</h2>
+        <table class="table">
+            <thead>
+                <tr class="table-info">
+                    <th scope="col">Nombre Seccion</th>
+                    <th scope="col">Listado</th>
+                    <th scope="col">Agregar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juegos Switch</td>
+                    <td><a href="{% url 'listado_switch' %}"><button>Mostrar listado</button></a></td>
+                    <td><a href="{% url 'agregar_switch' %}"><button>Agregar</button></a></td>
+                </tr>
+                <tr>
+                    <td>Juegos PlayStation 4</td>
+                    <td><a href="{% url 'listado_play' %}"><button>Mostrar listado</button></a></td>
+                    <td><a href="{% url 'agregar_play' %}"><button>Agregar</button></a></td>
+                </tr>
+                <tr>
+                    <td>Juegos Computador</td>
+                    <td><a href="{% url 'listado_pc' %}"><button>Mostrar listado</button></a></td>
+                    <td><a href="{% url 'agregar_pc' %}"><button>Agregar</button></a></td>
+                </tr>
+                <tr>
+                    <td>Mangas</td>
+                    <td><a href="{% url 'listado_mangas' %}"><button>Mostrar listado</button></a></td>
+                    <td><a href="{% url 'agregar_manga' %}"><button>Agregar</button></a></td>
+                </tr>
+                <tr>
+                    <td>Pedidos</td>
+                    <td><a href="{% url 'listar_pedidos' %}"><button>Mostrar listado</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
