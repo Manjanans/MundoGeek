@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,9 +69,24 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .usuario{
+            width: 25%;
+            height: 3%;
+            background-color: white;
+            color: black;
+            position: fixed;
+            top: 2%;
+            right: 15%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <div class="usuario">
+            <p>Bienvenido, {{request.user.first_name}} {{request.user.last_name}}</p>
+        </div>
         <h1>Administracion</h1>
         <h2>Secciones</h2>
         <table class="table">
@@ -105,8 +122,21 @@
                     <td>Pedidos</td>
                     <td><a href="{% url 'listar_pedidos' %}"><button>Mostrar listado</button></a></td>
                 </tr>
+                
+                {% if user == 'administracion_MG' %}
+                    <tr>
+                        <td>Usuarios</td>
+                        <td><a href="{% url 'listar_usuarios' %}"><button>Mostrar Listado</button></a></td>
+                        <td><a href="{% url 'agregar_usuarios' %}"><button>Agregar</button></a></td> 
+                    </tr>
+                {% endif %}
             </tbody>
         </table>
+        <center>
+            <a href="{% url 'index' %}"><button>Volver a la página principal</button></a>
+            <a href="{% url 'logOut' %}"><button>Cerrar Sesión</button></a>
+        </center>
+        
     </div>
 </body>
 </html>

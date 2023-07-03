@@ -10,6 +10,7 @@
         <script src="{% static 'javascript/regiones.js' %}"></script>
 </head>
 <body onload="agregarRegionesAlSelect()">
+    <a href="{% url 'adminIndex' %}">Volver</a>
     <form method="post" action="{% url 'editar_pedido' pedido.idPedido %}">
         {% csrf_token %}
         <div class="row g-2 my-1" id="formato-form">

@@ -35,6 +35,7 @@ urlpatterns = [
     path('pedidos/pedidoPc/confirmado',confirmacionKeyPc, name="confirmado"),
     path('pedidos/pedidoPlay/confirmado',confirmacionExitosa, name="confirmado"),
     path('pedidos/pedidoSwitch/confirmado',confirmacionExitosa, name="confirmado"),
+    path('administracion/inicioSesion',loginAdministracion,name="login"),
     path('administracion/index',adminIndex,name="adminIndex"),
     path('administracion/pedidos/', listar_pedidos, name='listar_pedidos'),
     path('administracion/switch/', listar_switch, name='listado_switch'),
@@ -55,6 +56,9 @@ urlpatterns = [
     path('administracion/eliminar/pc/<int:idcomputador>/', eliminar_pc, name='eliminar_pc'),
     path('administracion/eliminar/playstation/<int:idplay>/', eliminar_play, name='eliminar_play'),
     path('administracion/eliminar/switch/<int:idswitch>/', eliminar_switch, name='eliminar_switch'),
-    
-    
+    path('administracion/cerrarSesion',logoutAdministracion,name='logOut'),
+    path('administracion/usuarios/agregar',agregar_usuarios,name='agregar_usuarios'),
+    path('administracion/usuarios/listadoUsuarios',listar_usuarios,name='listar_usuarios'),
+    path('administracion/usuarios/editarUsuarios/<str:usuario>/',editar_usuarios,name='editar_usuarios'),
+    path('administracion/usuarios/eliminarUsuarios/<str:usuario>/',eliminar_usuarios,name='eliminar_usuarios'),
 ]

@@ -1,12 +1,51 @@
+from django.contrib.auth.forms import UserCreationForm  
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
 from common.models import *
 from juegos.models import *
 from mangas.models import *
+
 from .forms import *
 
-def adminIndex(request):
-    return render(request,'administracion.html')
+def logoutAdministracion(request):
+    logout(request)
+    return redirect('login')
 
+def loginAdministracion(request):   
+    if request.user.is_authenticated:
+            usuario = request.user.username
+            obj = User.objects.get(username=usuario)
+            context={'usuario':obj}
+            return redirect('adminIndex')
+
+    if request.method == "POST":
+        usuario = request.POST['user']
+        contrasenia = request.POST['password']
+
+        autenticacion = authenticate(request,username=usuario,password=contrasenia)
+
+        if autenticacion is not None:
+            obj = User.objects.get(username=usuario)
+            context={'usuario':obj}
+            login(request, autenticacion)
+            return redirect('adminIndex')
+        else:
+            context = {'fallido':'EL usuario o la contraseña indicada no son correctas. Intente nuevamente.'}
+            return render(request, 'login.html',context)
+        
+    return render(request, 'login.html')
+
+@login_required
+def adminIndex(request):
+    obj = request.user.username
+    context = {'user':str(obj)}
+    return render(request,'administracion.html',context)
+
+@login_required
 def agregar_manga(request):
     if request.method == "POST":
         formulario = subirImagen(request.POST,request.FILES)
@@ -33,6 +72,34 @@ def agregar_manga(request):
     context['form'] = subirImagen()
     return render(request,'agregar_manga.html',context)
 
+@login_required
+def agregar_usuarios(request):
+    context = {'form':creacionDeUsuario()}
+    if request.method == 'POST':
+        formulario = creacionDeUsuario(data = request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('adminIndex')
+    return render(request, 'agregar_usuarios.html', context)
+
+@login_required
+def editar_usuarios(request,usuario):
+    usser = User.objects.get(username = usuario)
+    context = {'usser':usser}
+    if request.method == 'POST':
+        neim = request.POST["nombre"]
+        surneim = request.POST["apellido"]
+        email = request.POST["email"]
+        pwrd = request.POST["contrasenia"]
+        usser.first_name = neim
+        usser.last_name = surneim
+        usser.email = email
+        usser.set_password(pwrd)
+        usser.save()
+        return redirect('adminIndex')
+    return render(request, 'editar_usuarios.html', context)   
+
+@login_required
 def agregar_switch(request):
     if request.method == "POST":
         formulario = subirImagen(request.POST,request.FILES)
@@ -59,6 +126,7 @@ def agregar_switch(request):
     context['form'] = subirImagen()
     return render(request,'agregar_switch.html',context)
 
+@login_required
 def agregar_play(request):
     if request.method == "POST":
         formulario = subirImagen(request.POST,request.FILES)
@@ -85,6 +153,7 @@ def agregar_play(request):
     context['form'] = subirImagen()
     return render(request,'agregar_play.html',context)
 
+@login_required
 def agregar_pc(request):
     if request.method == "POST":
         formulario = subirImagen(request.POST,request.FILES)
@@ -111,26 +180,37 @@ def agregar_pc(request):
     context['form'] = subirImagen()
     return render(request,'agregar_pc.html',context)
 
+@login_required
 def listar_pedidos(request):
     pedidos = Pedido.objects.all()
     return render(request, 'listar_pedidos.html', {'pedidos': pedidos})
 
+@login_required
 def listar_switch(request):
     switch = JuegoSwitch.objects.all()
     return render(request, 'listar_switch.html', {'juegos': switch})
 
+@login_required
+def listar_usuarios(request):
+    usuarios = User.objects.all()
+    return render(request, 'listar_usuarios.html', {'users': usuarios})
+
+@login_required
 def listar_play(request):
     play = JuegoPlay.objects.all()
     return render(request, 'listar_play.html', {'juegos': play})
 
+@login_required
 def listar_pc(request):
     pc = JuegoPC.objects.all()
     return render(request, 'listar_pc.html', {'juegos': pc})
 
+@login_required
 def listar_manga(request):
     manga = Manga.objects.all()
     return render(request, 'listar_manga.html', {'mangas': manga})
 
+@login_required
 def editar_pedido(request, idPedido):
     pedido = get_object_or_404(Pedido, idPedido=idPedido)
 
@@ -158,6 +238,7 @@ def editar_pedido(request, idPedido):
 
     return render(request, 'editar_pedido.html', {'pedido': pedido})
 
+@login_required
 def editar_manga(request,idmanga):
     manga = get_object_or_404(Manga,idmanga = idmanga)
     context = {'manga':manga}
@@ -190,6 +271,7 @@ def editar_manga(request,idmanga):
 
     return render(request,'editar_manga.html',context)
 
+@login_required
 def editar_pc(request,idcomputador):
     pc = get_object_or_404(JuegoPC,idcomputador = idcomputador)
     context = {'pc':pc}
@@ -222,6 +304,7 @@ def editar_pc(request,idcomputador):
 
     return render(request,'editar_pc.html',context)
 
+@login_required
 def editar_play(request,idplay):
     play = get_object_or_404(JuegoPlay,idplay = idplay)
     context = {'play':play}
@@ -254,6 +337,7 @@ def editar_play(request,idplay):
 
     return render(request,'editar_play.html',context)
 
+@login_required
 def editar_switch(request,idswitch):
     switch = get_object_or_404(JuegoSwitch,idswitch = idswitch)
     context = {'switch':switch}
@@ -286,7 +370,7 @@ def editar_switch(request,idswitch):
 
     return render(request,'editar_switch.html',context)
 
-
+@login_required
 def eliminar_pedido(request, idPedido):
     pedido = get_object_or_404(Pedido, idPedido=idPedido)
     
@@ -298,6 +382,7 @@ def eliminar_pedido(request, idPedido):
     
     return render(request, 'eliminar_pedido.html', {'pedido': pedido})
 
+@login_required
 def eliminar_manga(request, idmanga):
     manga = get_object_or_404(Manga, idmanga=idmanga)
     
@@ -309,6 +394,7 @@ def eliminar_manga(request, idmanga):
     
     return render(request, 'eliminar_manga.html', {'manga': manga})
 
+@login_required
 def eliminar_pc(request, idcomputador):
     pc = get_object_or_404(JuegoPC, idcomputador=idcomputador)
     
@@ -320,6 +406,7 @@ def eliminar_pc(request, idcomputador):
     
     return render(request, 'eliminar_pc.html', {'pc': pc})
 
+@login_required
 def eliminar_play(request, idplay):
     play = get_object_or_404(JuegoPlay, idplay=idplay)
     
@@ -331,6 +418,7 @@ def eliminar_play(request, idplay):
     
     return render(request, 'eliminar_play.html', {'play': play})
 
+@login_required
 def eliminar_switch(request, idswitch):
     switch = get_object_or_404(JuegoSwitch, idswitch=idswitch)
     
@@ -341,5 +429,17 @@ def eliminar_switch(request, idswitch):
         return redirect('listado_switch')
     
     return render(request, 'eliminar_switch.html', {'switch': switch})
+
+@login_required
+def eliminar_usuarios(request, usuario):
+    usser = get_object_or_404(User, username=usuario)
+    
+    if request.method == 'POST':
+        # Eliminar el pedido
+        usser.delete()
+
+        return redirect('listar_usuarios')
+    
+    return render(request, 'eliminar_usuarios.html', {'usser': usser})
 
 # Create your views here.
